@@ -84,6 +84,7 @@ class PersonneController extends Controller
     
         $personne = Personne::findOrFail($id);
         
+        
         return view('personne.edit',compact('personne'));
     
     }
@@ -93,6 +94,44 @@ class PersonneController extends Controller
      
     */
     
+    public function update(Request $request,$id){
     
+    $request->validate([
+    
+        'nomComplet' => 'required',
+        'email' => 'required',
+        'telephone' => 'required',
+        'salaire'=>'required',
+    ]);
+    
+    $personne= Personne::findOrFail($id);
+    $personne->nomComplet = $request->get('nomComplet');
+    $personne->email = $request->get('email');
+    $personne->telephone = $request->get('telephone');
+    $personne->salaire = $request->get('salaire');
+    
+    $personne->update();
+    return redirect("/")->with('success',"Personne Modifié avec succes");
+    
+    
+    
+    }
+    
+    
+    /**
+     * Suppression
+     */
+     
+     public function destroy($id) {
+     
+        $personne=Personne::findOrFail($id);
+        $personne->delete();
+        
+        return redirect("/")->with('success',"Personne Supprimer avec succes");
+        
+     }
+     
+     
+
     
 }
