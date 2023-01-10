@@ -28,6 +28,6 @@ Route::controller(PersonneControllerr::class)
     
     
     Route::post('/personne','store');
-    Route::path('/personne/{id}','update');
+    Route::patch('/personne/{id}','update');
     Route::delete('/contact/{id}', 'destroy');
 });
