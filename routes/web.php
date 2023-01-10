@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonneController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(PersonneControllerr::class)
+->group(function(){
+
+    Route::get('/','index');
+    Route::get('/personne/create', 'create');
+    Route::get('/personne/{}', 'show');
+    Route::get('/personne/{id}/edit', 'edit');
+    
+    
+    Route::post('/personne','store');
+    Route::path('/personne/{id}','update');
+    Route::delete('/contact/{id}', 'destroy');
 });
