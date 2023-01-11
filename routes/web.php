@@ -15,19 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('personne.index');
 });
 
-Route::controller(PersonneController::class)
-->group(function(){
+// Route::controller(PersonneController::class)
+// ->group(function(){
 
-    Route::get('/','index');
-    Route::get('/personne/create', 'create');
-    Route::get('/personne/{id}', 'show');
-    Route::get('/personne/{id}/edit', 'edit');
+//     Route::get('/','index');
+//     Route::get('/personne/create', 'create');
+//     Route::get('/personne/{id}', 'show');
+//     Route::get('/personne/{id}/edit', 'edit');
     
     
-    Route::post('/personne','store');
-    Route::patch('/personne/{id}','update');
-    Route::delete('/{id}', 'destroy');
-});
+//     Route::post('/personne','store');
+//     Route::patch('/personne/{id}','update');
+//     Route::delete('/{id}', 'destroy');
+// });
+
+Route::resource('personne', PersonneController::class);

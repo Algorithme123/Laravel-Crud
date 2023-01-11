@@ -7,21 +7,29 @@ use Illuminate\Http\Request;
 
 class PersonneController extends Controller
 {
-    // Affiche la liste des Personne
+    /**
+    * Affiche la liste des Personne
+    *
+    * @return \Illuminate\Http\Response
+    */
     
     public function index(){
     
-    $personnes = Personne::all();
+    // $personnes = Personne::all();
+    $data['personnes'] = Personne::orderBy('nomComplet', 'ASC')->paginate(5);
     
-    return view('personne.index',compact('personnes'));
+    return view(['personne.index'],$data);
     
     
     }
+
     
-    /*
-    Formulaire de cretaion d'une Personne
-    
+        /**
+    * Formulaire de cretaion d'une Personne
+    *
+    * @return \Illuminate\Http\Response
     */
+
     
     public function create(){
     
@@ -29,11 +37,14 @@ class PersonneController extends Controller
     
     }
     
-    /** 
     
-    *Enregistrer  d'une Personne dans la base de donnnee
     
-    */
+        /**
+        * Enregistrer  d'une Personne dans la base de donnnee
+        *
+        * @param  \Illuminate\Http\Request  $request
+        * @return \Illuminate\Http\Response
+        */
     
     public function store(Request $request){
         
@@ -46,15 +57,18 @@ class PersonneController extends Controller
             
         ]);
         
-        $personne = new Personne([
-            'nomComplet'=> $request->nomComplet,
-            'email' => $request->email,
-            'telephone' => $request->telephone,
-            'salaires' => $request->salaires,
-        ]);
+        $personne = new Personne;
+           $personne->nomComplet = $request->nomComplet;
+           $personne->email = $request->email;
+           $personne->telephone = $request->telephone;
+           $personne->salaires = $request->salaires;
+         
+        ;
         
         $personne->save();
-        return redirect('/')->with("Success","Personne Ajouté avec succès");
+        return redirect()
+            ->route('personne.index')
+            ->with("success",'Personne Ajouté avec succès');
     
     }
     
@@ -72,15 +86,11 @@ class PersonneController extends Controller
     }
     
     /**  
-    
         * retour du formulaire de Modification
-        
-    
     */
     
-    public function edit($id){
+    public function edit(Personne $personne){
     
-        $personne = Personne::findOrFail($id);
         
         
         return view('personne.edit',compact('personne'));
@@ -102,14 +112,17 @@ class PersonneController extends Controller
         'salaires'=>'required',
     ]);
     
-    $personne= Personne::findOrFail($id);
-    $personne->nomComplet = $request->get('nomComplet');
-    $personne->email = $request->get('email');
-    $personne->telephone = $request->get('telephone');
-    $personne->salaires = $request->get('salaires');
+    $personne = Personne::find($id);
+    $personne->nomComplet = $request ->nomComplet;
+    $personne ->email = $request ->email;
+    $personne ->telephone = $request ->telephone;
+    $personne ->salaires = $request->salaires;
     
-    $personne->update();
-    return redirect("/")->with('success',"Personne Modifié avec succes");
+
+    $personne->save();
+    return redirect()
+    ->route('personne.index')
+    ->with('success','Personne Modifié avec succes');
     
     
     
@@ -120,12 +133,13 @@ class PersonneController extends Controller
      * Suppression
      */
      
-     public function destroy($id) {
+     public function destroy(Personne $personne) {
      
-        $personne=Personne::findOrFail($id);
+        $personne=Personne::find($personne->id);
         $personne->delete();
         
-        return redirect("/")->with('success',"Personne Supprimer avec succes");
+        return redirect()->route('personne.index')
+        ->with('success',"Personne Supprimer avec succes");
         
      }
      

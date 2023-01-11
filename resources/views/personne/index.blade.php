@@ -20,7 +20,7 @@
         @if ($message =Session::get('success'))
         
                 <div class="alert alert-success">
-                        <p>{{ message }}</p>
+                        <p>{{$message }}</p>
                 
                 </div>
                 
@@ -34,10 +34,13 @@
                         <th>Email</th>
                         <th>Telephone</th>
                         <th>Salaire</th>
-                        <th>Actions</th>
+                        <th width="280px">Actions</th>
                 </tr>
                 
                 @foreach ($personnes as $index=>$personne)
+                
+                <tr>
+                
                 
                         <td>{{$index}}</td>
                         <td>{{$personne->nomComplet}}</td>
@@ -45,19 +48,22 @@
                         <td>{{$personne->telephone}}</td>
                         <td>{{$personne->salaires}}</td>
                         <td>
-                                <form action="{{url('personne/'.$personne->id)}}" method="POST">
+                                <form action="{{route('personne.destroy',$personne->id)}}" method="POST">
+
+                                        <a class="btn btn-info"href="{{route('personne.show' , $personne->id)}}">Voir</a>
+                                        <a class="btn btn-primary"href="{{route('personne.edit' , $personne->id)}}">Modifier</a>
+                                        
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-info"href="{{url('personne/'.$personne->id)}}">Voir</a>
-                                        <a class="btn btn-primary"href="{{url('personne/'.$personne->id.'/edit')}}">Modifier</a>
-                                        
                                         <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
                         </td>
                         
-                        
+                </tr>
+                
                         
                 @endforeach
+                
         
         </table>
         
