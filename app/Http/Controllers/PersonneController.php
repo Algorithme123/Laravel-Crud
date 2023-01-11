@@ -48,11 +48,11 @@ class PersonneController extends Controller
             
         ]);
         
-        $personne = new Personne([
-            'nomComplet'=>$request->get('nomComplet'),
-            'email'=>$request->get('email'),
-            'telephone'=>$request->get('telephone'),
-            'salaire'=>$request->get('salaire'),
+        $personne = new personne([
+            'nomComplet '=> $request->get('nomComplet'),
+            'email' => $request->get('email'),
+            'telephone' => $request->get('telephone'),
+            'salaire' => $request->get('salaire'),
         ]);
         
         $personne->save();

@@ -18,12 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(PersonneControllerr::class)
+Route::controller(PersonneController::class)
 ->group(function(){
 
     Route::get('/','index');
     Route::get('/personne/create', 'create');
-    Route::get('/personne/{}', 'show');
+    Route::get('/personne/{id}', 'show');
     Route::get('/personne/{id}/edit', 'edit');
     
     

@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-1">
                 
-                        <a class="btn btn-success" href="{{url('personne/create')}}"> Ajouter</a>
+                        <a class="btn btn-success" href="{{ url('contact/create') }}"> Ajouter</a>
                 </div>
                 
                 
@@ -49,7 +49,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <a class="btn btn-info"href="{{url('personne/'.$personne->id)}}">Voir</a>
-                                        <a class="btn btn-primary"href="{{url('personne/'.$personne->id./'edit')}}">Modifier</a>
+                                        <a class="btn btn-primary"href="{{url('personne/'.$personne->id.'/edit')}}">Modifier</a>
                                         
                                         <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
