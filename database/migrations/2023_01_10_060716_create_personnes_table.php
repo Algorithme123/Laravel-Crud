@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('personnes', function (Blueprint $table) {
             $table->id();
             $table->String('nomComplet');
-            $table->String('telephome');
+            $table->String('telephone');
             $table->String('email');
             $table->String('salaires');
             $table->timestamps();

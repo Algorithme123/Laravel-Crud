@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1> Modifier un Contact</h1>
+<h1> Modifier un Personne</h1>
 
 
         @if ($errors->any())
@@ -38,8 +38,8 @@
                         <input type="email" class="form-control" name='email' id="email" placeholder="abc@gmail.com">
                 </div>
                 <div class="form-group mb-3">
-                        <label for="salaire"> Salaire ($):</label>
-                        <input type="salaire" class="form-control" name='salaire' id="salaire" placeholder="$ 2229899089.00">
+                        <label for="salaires"> Salaire ($):</label>
+                        <input type="salaires" class="form-control" name='salaires' id="salaires" placeholder="$ 2229899089.00">
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Enregistrer</button>

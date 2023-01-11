@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personne;
-use Faker\Provider\ar_EG\Person;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 class PersonneController extends Controller
 {
-    // Affiche la liste des Contacts
+    // Affiche la liste des Personne
     
     public function index(){
     
@@ -44,15 +42,15 @@ class PersonneController extends Controller
             'nomComplet'=>'required',
             'email'=>'required',
             'telephone'=>'required',
-            'salaire'=>'required',
+            'salaires'=>'required',
             
         ]);
         
-        $personne = new personne([
-            'nomComplet '=> $request->get('nomComplet'),
-            'email' => $request->get('email'),
-            'telephone' => $request->get('telephone'),
-            'salaire' => $request->get('salaire'),
+        $personne = new Personne([
+            'nomComplet'=> $request->nomComplet,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'salaires' => $request->salaires,
         ]);
         
         $personne->save();
@@ -101,14 +99,14 @@ class PersonneController extends Controller
         'nomComplet' => 'required',
         'email' => 'required',
         'telephone' => 'required',
-        'salaire'=>'required',
+        'salaires'=>'required',
     ]);
     
     $personne= Personne::findOrFail($id);
     $personne->nomComplet = $request->get('nomComplet');
     $personne->email = $request->get('email');
     $personne->telephone = $request->get('telephone');
-    $personne->salaire = $request->get('salaire');
+    $personne->salaires = $request->get('salaires');
     
     $personne->update();
     return redirect("/")->with('success',"Personne Modifié avec succes");

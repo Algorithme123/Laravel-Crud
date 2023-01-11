@@ -29,5 +29,5 @@ Route::controller(PersonneController::class)
     
     Route::post('/personne','store');
     Route::patch('/personne/{id}','update');
-    Route::delete('/contact/{id}', 'destroy');
+    Route::delete('/{id}', 'destroy');
 });

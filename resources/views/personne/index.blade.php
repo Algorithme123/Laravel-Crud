@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-1">
                 
-                        <a class="btn btn-success" href="{{ url('contact/create') }}"> Ajouter</a>
+                        <a class="btn btn-success" href="{{ url('personne/create') }}"> Ajouter</a>
                 </div>
                 
                 
@@ -43,7 +43,7 @@
                         <td>{{$personne->nomComplet}}</td>
                         <td>{{$personne->email}}</td>
                         <td>{{$personne->telephone}}</td>
-                        <td>{{$personne->salaire}}</td>
+                        <td>{{$personne->salaires}}</td>
                         <td>
                                 <form action="{{url('personne/'.$personne->id)}}" method="POST">
                                         @csrf

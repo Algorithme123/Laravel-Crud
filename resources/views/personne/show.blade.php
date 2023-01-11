@@ -3,26 +3,26 @@
 @section('content')
 
 
-        <h1>Gestion des Contacts</h1>
+        <h1>Gestion des Personne</h1>
         
         <table class="table table-bordered">
         <tr>
                 <th>Nom complet : </th>
-                <td>{{ $contact->nomComplet}}</td>
+                <td>{{ $personne->nomComplet}}</td>
         </tr>
         
         <tr>
                 <th>Telephone :  </th>
-                <td>{{ $contact->telephone}}</td>
+                <td>{{ $personne->telephone}}</td>
         </tr>
         
         <tr>
                 <th>Email : </th>
-                <td>{{ $contact->email}}</td>
+                <td>{{ $personne->email}}</td>
         </tr>
         <tr>
                 <th>Salaire : </th>
-                <td>{{ $contact->salaire}}</td>
+                <td>{{ $personne->salaires}}</td>
         </tr>
         
         </table>
