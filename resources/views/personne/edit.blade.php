@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1> Modifier un Personne</h1>
+<h1> Modifier</h1>
 
 
         @if ($errors->any())
@@ -19,10 +19,10 @@
                 
         @endif
         
-        <form method="post" action="{{url('personne/'.$personne->id)}}">
+        <form method="post" action="{{route('personne.update',$personne->id)}}">
         
         
-                @method('PATCH')
+                @method('PUT')
                 @csrf
                 
                 <div class="form-group mb-3">

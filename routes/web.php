@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('personne.index');
+    // return view('personne.index');
 });
 
 // Route::controller(PersonneController::class)

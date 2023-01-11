@@ -18,7 +18,7 @@ class PersonneController extends Controller
     // $personnes = Personne::all();
     $data['personnes'] = Personne::orderBy('nomComplet', 'ASC')->paginate(5);
     
-    return view(['personne.index'],$data);
+    return view('personne.index',$data);
     
     
     }

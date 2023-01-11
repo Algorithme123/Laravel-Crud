@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-1">
                 
-                        <a class="btn btn-success" href="{{ url('personne/create') }}"> Ajouter</a>
+                        <a class="btn btn-success" href="{{ route('personne.create') }}"> Ajouter</a>
                 </div>
                 
                 

@@ -3,7 +3,7 @@
 @section('content')
 
 
-        <h1> Ajouter Personne</h1>
+        <h1> Ajouter</h1>
         
         @if ($errors->any())
         
